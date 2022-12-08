@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.javacrumbs.shedlock.spring.annotation.SchedulerLock;
@@ -25,7 +26,7 @@ public class FlightExportScheduler {
     private final ExcelAdapterService excelAdapterService;
 
     @Scheduled(cron = "${scheduler.cron.export-to-file}")
-    @SchedulerLock(name = "FlightExportScheduler_exportAndDeactivateFlights", lockAtLeastFor = "30s", lockAtMostFor = "50s")
+    @SchedulerLock(name = "FlightExportScheduler_exportAndDeactivateFlights", lockAtLeastFor = "30S", lockAtMostFor = "3M")
     public void exportAndDeactivateFlights() {
         var exportThread = new Thread(() -> {
             log.info("FlightExportScheduler_exportToFile started");

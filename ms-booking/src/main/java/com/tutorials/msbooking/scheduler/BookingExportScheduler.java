@@ -25,7 +25,7 @@ public class BookingExportScheduler {
     private final BookingRepository bookingRepository;
 
     @Scheduled(cron = "${scheduler.cron.export-to-file}")
-    @SchedulerLock(name = "BookingExportScheduler_exportBookings", lockAtLeastFor = "30s", lockAtMostFor = "50s")
+    @SchedulerLock(name = "BookingExportScheduler_exportBookings", lockAtLeastFor = "30s", lockAtMostFor = "3M")
     public void exportBookings() {
         var exportThread = new Thread(() -> {
             log.info("BookingExportScheduler_exportBookings started");

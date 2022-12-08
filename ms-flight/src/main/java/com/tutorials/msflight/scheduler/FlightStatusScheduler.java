@@ -18,7 +18,7 @@ public class FlightStatusScheduler {
     private final FlightRepository flightRepository;
 
     @Scheduled(cron = "${scheduler.cron.status-update}")
-    @SchedulerLock(name = "FlightStatusScheduler_updateFlightStatus", lockAtLeastFor = "PT2M", lockAtMostFor = "PT3M")
+    @SchedulerLock(name = "FlightStatusScheduler_updateFlightStatus", lockAtLeastFor = "30S", lockAtMostFor = "PT3M")
     public void updateFlightStatus() {
         var statusThread = new Thread(() -> {
             log.info("FlightStatusScheduler_updateFlightStatus started");
