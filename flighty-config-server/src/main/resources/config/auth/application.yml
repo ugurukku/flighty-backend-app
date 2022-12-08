@@ -1,0 +1,57 @@
+server:
+  port: ${SERVER_PORT:0}
+  servlet:
+    context-path: /auth-ms
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/flighty}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:xiaominote9}
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: ${SPRING_LIQUIBASE_ENABLED:true}
+    change-log: classpath:liquibase/changelog-master.yml
+    drop-first: false
+    default-schema: ${FLIGHTY_DB_SCHEMA:public}
+    database-change-log-table: AUTHMS_DBCHANGELOG
+    database-change-log-lock-table: AUTHMS_DBCHANGELOGLOCK
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+  server:
+    enableSelfPreservation: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  context-path: /
+
+jwt:
+  expiry:
+    default: ${JWT_DEFAULT_EXPIRY:3600000}
+    remember: ${JWT_REMEMBERED_EXPIRY:10800000}
+  secret: ${JWT_SECRET:temporarysecretkey}
+  header: ${JWT_HEADER:Authorization}
+  prefix: ${JWT_PREFIX:Bearer}
+
+security:
+  internal:
+    header:
+      name: ${INTERNAL_SECURITY_HEADER:X-Gateway-Token}
+      value: ${INTERNAL_SECURITY_VALUE:token}
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full

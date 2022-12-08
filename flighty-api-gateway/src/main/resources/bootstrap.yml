@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: flighty-api-gateway
+  cloud:
+    config:
+      profile: native
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      name: gateway
+
+  profiles:
+    active: native

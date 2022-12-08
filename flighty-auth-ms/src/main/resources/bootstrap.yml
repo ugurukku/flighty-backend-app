@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: flighty-auth-ms
+  cloud:
+    config:
+      profile: native
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      name: auth
+      label: ms
+
+  profiles:
+    active: native

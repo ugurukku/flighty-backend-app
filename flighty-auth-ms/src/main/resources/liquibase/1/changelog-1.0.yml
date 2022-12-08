@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: user-related-tables
+      author: Emin Israfilzadeh
+      changes:
+        - sqlFile:
+            path: liquibase/1/changelog-1.0-tables.sql

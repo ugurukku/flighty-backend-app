@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: flight-related-tables
+      author: Shafa Mammadova
+      changes:
+        - sqlFile:
+            path: liquibase/1/changelog-1.0-tables.sql

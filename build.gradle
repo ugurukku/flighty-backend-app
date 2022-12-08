@@ -1,0 +1,27 @@
+plugins {
+	id 'org.springframework.boot' version "$spring_boot_version"
+	id 'io.spring.dependency-management' version "$spring_dependency_manager_version"
+	id 'java'
+}
+
+group = 'com.tutorials'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation "org.springframework.cloud:spring-cloud-starter-config:${spring_cloud_version}"
+	implementation "org.springframework.cloud:spring-cloud-starter-bootstrap:${cloud_bootstrap_version}"
+	implementation "org.springframework.cloud:spring-cloud-starter-loadbalancer:${load_balancer_version}"
+}
+
+bootJar {
+	enabled = false
+}
+
+jar {
+	enabled = true
+}

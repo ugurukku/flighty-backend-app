@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: users-insert
+      author: Shafa Mammadova
+      changes:
+        - sqlFile:
+            path: liquibase/1/changelog-1.2-users.sql

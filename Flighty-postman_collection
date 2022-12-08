@@ -1,0 +1,586 @@
+{
+	"info": {
+		"_postman_id": "3077d356-f270-418d-870b-53a73602a48f",
+		"name": "Flighty",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9839142"
+	},
+	"item": [
+		{
+			"name": "MS-USER",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"eminshafa@gmail.com\",\r\n    \"password\": \"12345\",\r\n    \"fullName\": \"Shafa Emin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/ms-user/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AUTH-MS",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", jsonData.data.body.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Gateway-Token",
+								"value": "token",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"eminshafa@gmail.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth-ms/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth-ms",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login - 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", jsonData.data.body.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Gateway-Token",
+								"value": "token",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"emin@gmail.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth-ms/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth-ms",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MS-FLIGHT",
+			"item": [
+				{
+					"name": "Update flight",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"arrivalTime\": \"2021-08-28 15:12\",\r\n    \"departureTime\": \"2021-06-05 20:20\",\r\n    \"price\": 0,\r\n    \"departureLocationId\": \"068297d8-61ca-11ed-b3ba-b23ebcbe2c88\",\r\n    \"arrivalLocationId\": \"0682dbbc-61ca-11ed-b3ba-b23ebcbe2c88\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/ms-flight/flights/35a74072-680f-11ed-ba42-b23ebcbe2c88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-flight",
+								"flights",
+								"35a74072-680f-11ed-ba42-b23ebcbe2c88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete flight by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Gateway-Token",
+								"value": "token",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/ms-flight/flights/0689c8dc-61ca-11ed-b3ba-b23ebcbe2c88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-flight",
+								"flights",
+								"0689c8dc-61ca-11ed-b3ba-b23ebcbe2c88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get flight by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/ms-flight/flights/0689c8dc-61ca-11ed-b3ba-b23ebcbe2c88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-flight",
+								"flights",
+								"0689c8dc-61ca-11ed-b3ba-b23ebcbe2c88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create flight",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"arrivalTime\": \"2021-02-28 15:12\",\r\n    \"departureTime\": \"2021-01-28 15:12\",\r\n    \"price\": 200,\r\n    \"departureLocationId\": \"06821c2c-61ca-11ed-b3ba-b23ebcbe2c88\",\r\n    \"arrivalLocationId\": \"06823b80-61ca-11ed-b3ba-b23ebcbe2c88\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/ms-flight/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-flight",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all flights",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/ms-flight/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-flight",
+								"flights"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MS-BOOKING",
+			"item": [
+				{
+					"name": "Create booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightId\": \"35a74072-680f-11ed-ba42-b23ebcbe2c88\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/ms-booking/bookings/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-booking",
+								"bookings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all bookings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/ms-booking/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-booking",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete booking by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/ms-booking/bookings/a1f4bd96-6813-11ed-8e84-b23ebcbe2c88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-booking",
+								"bookings",
+								"a1f4bd96-6813-11ed-8e84-b23ebcbe2c88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete booking by flight id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/ms-booking/bookings/?flight-id=35a74072-680f-11ed-ba42-b23ebcbe2c88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-booking",
+								"bookings",
+								""
+							],
+							"query": [
+								{
+									"key": "flight-id",
+									"value": "35a74072-680f-11ed-ba42-b23ebcbe2c88"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get booking by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/ms-booking/bookings/a1f4bd96-6813-11ed-8e84-b23ebcbe2c88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-booking",
+								"bookings",
+								"a1f4bd96-6813-11ed-8e84-b23ebcbe2c88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update booking",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"flightId\": \"0689a10e-61ca-11ed-b3ba-b23ebcbe2c77\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/ms-booking/bookings/a1f4bd96-6813-11ed-8e84-b23ebcbe2c88",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-booking",
+								"bookings",
+								"a1f4bd96-6813-11ed-8e84-b23ebcbe2c88"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MS-EXCEL-ADAPTER",
+			"item": [
+				{
+					"name": "Create excel file",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Gateway-Token",
+								"value": "token",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fileName\": \"shafa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/ms-excel-adapter/files",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-excel-adapter",
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add sheet to excel file",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Gateway-Token",
+								"value": "token",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": [\n            \"Emin\",\n            \"Shafa\",\n            \"Daisy\",\n            \"Papatya\"\n        ],\n        \"surname\": [\n            \"Israfilzadeh\",\n            \"Mammadova\",\n            \"\",\n            \"dhj\"\n        ],\n        \"age\": [\"27\", \"22\", \"\", \"5\"],\n        \"note\": [\"malka\", \"\", \"bibəəəə\"]\n    },\n    \"sheetName\": \"sheet3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/ms-excel-adapter/files/shafa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ms-excel-adapter",
+								"files",
+								"shafa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

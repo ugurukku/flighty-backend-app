@@ -1,0 +1,18 @@
+server:
+  port: ${SERVER_PORT:8761}
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+  server:
+    enableSelfPreservation: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  context-path: /

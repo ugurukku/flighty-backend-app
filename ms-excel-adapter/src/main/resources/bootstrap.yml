@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ms-excel-adapter
+  cloud:
+    config:
+      profile: native
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      name: excel-adapter
+      label: ms
+
+  profiles:
+    active: native

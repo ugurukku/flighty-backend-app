@@ -1,0 +1,15 @@
+insert into app_user (email, password, full_name) values ('bedelman0@diigo.com', 'iPKA85mG', 'Brendan Edelman');
+insert into app_user (email, password, full_name) values ('jcreeber1@si.edu', 'CIzaPazpxJGh', 'Jeramey Creeber');
+insert into app_user (email, password, full_name) values ('rgrigoriev2@scribd.com', 'oLOZ2k1', 'Rochelle Grigoriev');
+insert into app_user (email, password, full_name) values ('wdriuzzi3@sun.com', 'SJKv8dYg', 'Welsh Driuzzi');
+insert into app_user (email, password, full_name) values ('mevenden4@elegantthemes.com', 'KcHzla8Saqr2', 'Malina Evenden');
+insert into app_user (email, password, full_name) values ('btownes5@seesaa.net', 'Lj3wYvAldU', 'Benton Townes');
+insert into app_user (email, password, full_name) values ('eivanishchev6@rakuten.co.jp', 'UgRo2ao', 'Eada Ivanishchev');
+insert into app_user (email, password, full_name) values ('ltitcumb7@t-online.de', 'yvCSwN64ddS', 'Lynnell Titcumb');
+insert into app_user (email, password, full_name) values ('apaulon8@bbb.org', 'G0e3bmr4p3E3', 'Ara Paulon');
+insert into app_user (email, password, full_name) values ('pcarabine9@census.gov', 'BiI0BJbh', 'Phillip Carabine');
+insert into app_user (email, password, full_name) values ('gpeagrama@dion.ne.jp', '2U2XqjNtpB6', 'Garwood Peagram');
+insert into app_user (email, password, full_name) values ('dgunbyb@addthis.com', 'XTroVr', 'Dov Gunby');
+insert into app_user (email, password, full_name) values ('jdurramc@wsj.com', 'bjvY7TnO0Sg0', 'Jessi Durram');
+insert into app_user (email, password, full_name) values ('hdabbesd@drupal.org', '56XXKLQQf', 'Hagen Dabbes');
+insert into app_user (email, password, full_name) values ('fjoshe@youtube.com', 'DqQ0HdfTjw0H', 'Fabe Josh');

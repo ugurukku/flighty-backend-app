@@ -1,0 +1,61 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+}
+
+group = "$project_group"
+version = "$project_version"
+sourceCompatibility = '17'
+
+ext {
+    set('springCloudVersion', "2021.0.0")
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.cloud:spring-cloud-starter-config:${spring_cloud_version}"
+    implementation "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${eureka_version}"
+    implementation "org.springframework.cloud:spring-cloud-starter-bootstrap:${cloud_bootstrap_version}"
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation "org.springframework.boot:spring-boot-starter-actuator:${actuator_version}"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-validation:${spring_boot_version}"
+    implementation "org.springframework.boot:spring-boot-starter-security:${spring_boot_version}"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springdoc:springdoc-openapi-ui:${open_api_version}"
+    implementation "io.jsonwebtoken:jjwt:${jwt_version}"
+    implementation "io.github.openfeign:feign-annotation-error-decoder:${error_decoder_version}"
+    implementation "io.github.openfeign:feign-jackson:${feign_jackson_version}"
+    implementation "org.liquibase:liquibase-core:${liquibase_version}"
+    implementation "net.javacrumbs.shedlock:shedlock-spring:${shedlock_version}"
+    implementation "net.javacrumbs.shedlock:shedlock-provider-jdbc-template:${shedlock_version}"
+    compileOnly "javax.servlet:javax.servlet-api:${javax_servlet_version}"
+    runtimeOnly "org.postgresql:postgresql"
+    compileOnly "org.projectlombok:lombok:${lombok_version}"
+    annotationProcessor "org.projectlombok:lombok:${lombok_version}"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    implementation "org.mapstruct:mapstruct:${mapstruct_version}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstruct_version}"
+    compileOnly "org.mapstruct:mapstruct-processor:${mapstruct_version}"
+
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

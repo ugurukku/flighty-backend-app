@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: roles-insert
+      author: Shafa Mammadova
+      changes:
+        - sqlFile:
+            path: liquibase/1/changelog-1.1-roles.sql

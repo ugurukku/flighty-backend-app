@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: flighty-service-discovery
+  cloud:
+    config:
+      profile: native
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      label: eureka
+      name: discovery
+
+  profiles:
+    active: native

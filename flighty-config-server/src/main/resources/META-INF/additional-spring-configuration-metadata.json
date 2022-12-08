@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "management.context-path",
+      "type": "java.lang.String",
+      "description": "Description for management.context-path."
+  }
+] }

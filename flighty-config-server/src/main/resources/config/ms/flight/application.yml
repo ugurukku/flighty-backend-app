@@ -1,0 +1,65 @@
+server:
+  port: ${SERVER_PORT:0}
+  servlet:
+    context-path: /ms-flight
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/flighty}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:xiaominote9}
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: ${SPRING_LIQUIBASE_ENABLED:true}
+    change-log: classpath:liquibase/changelog-master.yml
+    drop-first: false
+    default-schema: ${FLIGHTY_DB_SCHEMA:public}
+    database-change-log-table: FLIGHTMS_DBCHANGELOG
+    database-change-log-lock-table: FLIGHTMS_DBCHANGELOGLOCK
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+  server:
+    enableSelfPreservation: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  context-path: /
+
+security:
+  internal:
+    header:
+      name: ${INTERNAL_SECURITY_HEADER:X-Gateway-Token}
+      value: ${INTERNAL_SECURITY_VALUE:token}
+
+
+client:
+  url:
+    auth: ${AUTH_MS_URL:http://localhost:8081/auth-ms/}
+    booking: ${BOOKING_MS_URL:http://localhost:8081/ms-booking/}
+    excel-adapter: ${EXCEL_ADAPTER_MS_URL:http://localhost:8081/ms-excel-adapter/}
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+
+scheduler:
+  cron:
+    #    status-update: ${CRON_FORMAT_STATUS_UPDATE:0 0 * ? * *}   # every hour
+    status-update: ${CRON_FORMAT_STATUS_UPDATE:0 * * ? * *}   # every minute
+    #    export-to-file: ${CRON_FORMAT_EXPORT_TO_FILE:0 0 0 * * ?} # every day at 12am
+    export-to-file: ${CRON_FORMAT_EXPORT_TO_FILE:0 * * ? * *} # every minute
+  prop:
+    shed-table-name: public.flighty_shedlock

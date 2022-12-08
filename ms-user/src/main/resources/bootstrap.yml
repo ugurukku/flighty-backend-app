@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ms-user
+  cloud:
+    config:
+      profile: native
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      name: user
+      label: ms
+
+  profiles:
+    active: native
